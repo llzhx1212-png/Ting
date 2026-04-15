@@ -1,4 +1,4 @@
-const WEB_APP_URL = "把這裡改成你的 Apps Script /exec 網址";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwHfTmvqufUNcIvADPLGy4zgFSzOg0zjagDOfFNKpThtKcdp9gTcc2YmX8_VslhDrZTaw/exec";
 const CURRENCIES = ["TWD", "JPY", "KRW"];
 
 const form = document.getElementById("entryForm");
