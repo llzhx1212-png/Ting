@@ -11,6 +11,7 @@ const summaryToggleText = document.getElementById("summaryToggleText");
 let entries = [];
 
 init();
+setupSummaryToggle();
 
 async function init() {
   setDefaultDateTime();
@@ -281,4 +282,22 @@ function escapeHtml(text) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function setupSummaryToggle() {
+  if (!summaryToggle || !summaryContent || !summaryToggleText) return;
+
+  summaryToggle.addEventListener("click", () => {
+    const isHidden = summaryContent.classList.contains("is-hidden");
+
+    if (isHidden) {
+      summaryContent.classList.remove("is-hidden");
+      summaryToggle.setAttribute("aria-expanded", "true");
+      summaryToggleText.textContent = "收起";
+    } else {
+      summaryContent.classList.add("is-hidden");
+      summaryToggle.setAttribute("aria-expanded", "false");
+      summaryToggleText.textContent = "展開";
+    }
+  });
 }
