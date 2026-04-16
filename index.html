@@ -107,9 +107,21 @@
     </section>
 
     <section class="card">
-      <h2 class="section-title">總覽</h2>
-      <div id="summaryGrid" class="summary-grid"></div>
-    </section>
+  <button
+    id="summaryToggle"
+    class="collapse-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="summaryContent"
+  >
+    <span>總覽</span>
+    <span id="summaryToggleText">展開</span>
+  </button>
+
+  <div id="summaryContent" class="collapse-content is-hidden">
+    <div id="summaryGrid" class="summary-grid"></div>
+  </div>
+</section>
 
     <section class="card">
       <h2 class="section-title">明細</h2>
