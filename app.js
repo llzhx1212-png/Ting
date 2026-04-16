@@ -4,6 +4,9 @@ const CURRENCIES = ["TWD", "JPY", "KRW"];
 const form = document.getElementById("entryForm");
 const summaryGrid = document.getElementById("summaryGrid");
 const details = document.getElementById("details");
+const summaryToggle = document.getElementById("summaryToggle");
+const summaryContent = document.getElementById("summaryContent");
+const summaryToggleText = document.getElementById("summaryToggleText");
 
 let entries = [];
 
