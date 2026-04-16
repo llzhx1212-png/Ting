@@ -272,6 +272,19 @@ function formatMoney(value, currency) {
   );
 }
 
+function formatTimeLabel(timeString) {
+  return String(timeString || "").replace(":", "：");
+}
+
+function formatMoneyCompact(value, currency) {
+  return (
+    new Intl.NumberFormat("zh-TW", {
+      minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+      maximumFractionDigits: 2
+    }).format(value) + currency
+  );
+}
+
 function formatSignedMoney(value, currency) {
   const sign = value > 0 ? "+ " : value < 0 ? "- " : "";
   return sign + formatMoney(Math.abs(value), currency);
