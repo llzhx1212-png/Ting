@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwHfTmvqufUNcIvADPLGy4zgFSzOg0zjagDOfFNKpThtKcdp9gTcc2YmX8_VslhDrZTaw/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx1IBguF3YXZsYjNGrcHvV2BXAKnSuArYTyRyi4sBhRSjfkpiwLGytgVG8fPs3xqfGg5w/exec";
 const CURRENCIES = ["TWD", "JPY", "KRW"];
 
 const form = document.getElementById("entryForm");
