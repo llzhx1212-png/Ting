@@ -273,7 +273,8 @@ function formatMoney(value, currency) {
 }
 
 function formatTimeLabel(timeString) {
-  return String(timeString || "").replace(":", "：");
+  const [hour = "0", minute = "0"] = String(timeString || "").split(":");
+  return `${Number(hour)}:${minute}`;
 }
 
 function formatMoneyCompact(value, currency) {
@@ -291,8 +292,8 @@ function formatSignedMoney(value, currency) {
 }
 
 function formatDateLabel(dateString) {
-  const parts = dateString.split("-");
-  return `${parts[0]}.${parts[1]}.${parts[2]}`;
+  const [year, month, day] = String(dateString).split("-");
+  return `${year}.${Number(month)}.${Number(day)}`;
 }
 
 function escapeHtml(text) {
