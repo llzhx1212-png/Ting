@@ -31,13 +31,9 @@ body {
 }
 
 .topbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(247, 247, 251, 0.92);
-  backdrop-filter: blur(10px);
   padding: 10px 0 14px;
   margin-bottom: 10px;
+  background: transparent;
 }
 
 .nickname {
