@@ -75,9 +75,16 @@ async function fetchEntries() {
       throw new Error(result.message || "讀取失敗");
     }
 
-    entries = Array.isArray(result.entries) ? result.entries : [];
+    entries = Array.isArray(result.entries)
+      ? result.entries.map((entry) => ({
+          ...entry,
+          date: normalizeDateValue(entry.date),
+          time: normalizeTimeValue(entry.time)
+        }))
+      : [];
   } catch (error) {
     console.error(error);
+    entries = [];
     details.innerHTML = `
       <div class="empty">讀取試算表失敗，請檢查 Apps Script 部署網址或權限設定。</div>
     `;
