@@ -292,7 +292,7 @@ function formatSignedMoney(value, currency) {
 
 function formatDateLabel(dateString) {
   const parts = dateString.split("-");
-  return `${parts[0]} / ${parts[1]} / ${parts[2]}`;
+  return `${parts[0]}.${parts[1]}.${parts[2]}`;
 }
 
 function escapeHtml(text) {
