@@ -267,6 +267,66 @@ function setDefaultDateTime() {
   currencyInput.value = "TWD";
   typeInput.value = "expense";
 }
+function normalizeDateValue(value) {
+  if (!value) return "";
+
+  const text = String(value).trim();
+
+  // 已經是 yyyy-mm-dd
+  const isoMatch = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (isoMatch) {
+    return `${isoMatch[1]}-${isoMatch[2]}-${isoMatch[3]}`;
+  }
+
+  // 像 Thu Apr 16 2026 00:00:00 GMT+0800 (台北標準時間)
+  const engMatch = text.match(/^[A-Za-z]{3}\s+([A-Za-z]{3})\s+(\d{1,2})\s+(\d{4})/);
+  if (engMatch) {
+    const monthMap = {
+      Jan: "01",
+      Feb: "02",
+      Mar: "03",
+      Apr: "04",
+      May: "05",
+      Jun: "06",
+      Jul: "07",
+      Aug: "08",
+      Sep: "09",
+      Oct: "10",
+      Nov: "11",
+      Dec: "12"
+    };
+
+    const month = monthMap[engMatch[1]] || "01";
+    const day = String(Number(engMatch[2])).padStart(2, "0");
+    const year = engMatch[3];
+
+    return `${year}-${month}-${day}`;
+  }
+
+  return text;
+}
+
+function normalizeTimeValue(value) {
+  if (!value) return "";
+
+  const text = String(value).trim();
+
+  // 本來就是 HH:mm 或 H:mm
+  const simpleMatch = text.match(/^(\d{1,2}):(\d{2})$/);
+  if (simpleMatch) {
+    return `${simpleMatch[1].padStart(2, "0")}:${simpleMatch[2]}`;
+  }
+
+  // 從完整字串抓時間，例如 23:47:00
+  const timeMatch = text.match(/(\d{1,2}):(\d{2})(?::\d{2})?/);
+  if (timeMatch) {
+    const hour = timeMatch[1].padStart(2, "0");
+    const minute = timeMatch[2];
+    return `${hour}:${minute}`;
+  }
+
+  return text;
+}
 
 function formatMoney(value, currency) {
   return (
@@ -280,8 +340,10 @@ function formatMoney(value, currency) {
 }
 
 function formatTimeLabel(timeString) {
-  const [hour = "0", minute = "0"] = String(timeString || "").split(":");
-  return `${Number(hour)}:${minute}`;
+  const match = String(timeString).match(/^(\d{2}):(\d{2})$/);
+  if (!match) return String(timeString);
+
+  return `${Number(match[1])}:${match[2]}`;
 }
 
 function formatMoneyCompact(value, currency) {
@@ -299,8 +361,10 @@ function formatSignedMoney(value, currency) {
 }
 
 function formatDateLabel(dateString) {
-  const [year, month, day] = String(dateString).split("-");
-  return `${year}.${Number(month)}.${Number(day)}`;
+  const match = String(dateString).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return String(dateString);
+
+  return `${match[1]}.${Number(match[2])}.${Number(match[3])}`;
 }
 
 function escapeHtml(text) {
