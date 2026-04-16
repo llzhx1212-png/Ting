@@ -304,8 +304,52 @@ body {
   }
 
   .two-col {
-    grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.field {
+  min-width: 0;
+}
+
+.field input,
+.field select,
+.field textarea {
+  min-width: 0;
+}
+
+@media (max-width: 520px) {
+  .wrap {
+    padding: 14px 10px 28px;
   }
+
+  .card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .two-col {
+    gap: 10px;
+  }
+
+  .field label {
+    font-size: 0.82rem;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    padding: 12px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+}
 }
 
 .collapse-toggle {
