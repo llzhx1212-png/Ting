@@ -202,11 +202,17 @@ function renderEntry(entry) {
         <div class="entry-left">
           <div class="entry-detail">${escapeHtml(entry.detail)}</div>
           <div class="entry-meta">
-            ${escapeHtml(entry.category)}・${escapeHtml(entry.account)}・${escapeHtml(entry.time)}・${escapeHtml(entry.currency)}
+            ${escapeHtml(entry.category)} ${formatTimeLabel(entry.time)}
           </div>
         </div>
-        <div class="entry-amount ${amountClass}">
-          ${sign} ${formatMoney(entry.amount, entry.currency)}
+
+        <div class="entry-right">
+          <div class="entry-amount ${amountClass}">
+            ${sign}${formatMoneyCompact(entry.amount, entry.currency)}
+          </div>
+          <div class="entry-account">
+            ${escapeHtml(entry.account)}
+          </div>
         </div>
       </div>
 
