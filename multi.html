@@ -9,13 +9,29 @@
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="nickname">Ting</div>
-      <nav class="mode-tabs" aria-label="模式切換">
-        <a class="tab" href="./index.html">單人</a>
-        <a class="tab active" href="./multi.html">多人</a>
-        <a class="tab" href="./dispute.html">我跟 XXX 的金錢糾紛</a>
-      </nav>
-    </div>
+  <button id="drawerOpenBtn" class="icon-btn" type="button" aria-label="開啟選單">
+    ☰
+  </button>
+
+  <div class="nickname">Ting</div>
+</div>
+
+<div id="drawerOverlay" class="drawer-overlay"></div>
+
+<aside id="sideDrawer" class="side-drawer" aria-label="側邊選單">
+  <div class="drawer-header">
+    <div class="drawer-title">功能選單</div>
+    <button id="drawerCloseBtn" class="icon-btn" type="button" aria-label="關閉選單">
+      ✕
+    </button>
+  </div>
+
+  <nav class="drawer-nav">
+    <a class="drawer-link" href="./index.html">單人</a>
+    <a class="drawer-link active" href="./multi.html">多人</a>
+    <a class="drawer-link" href="./dispute.html">我跟 XXX 的金錢糾紛</a>
+  </nav>
+</aside>
 
     <section class="card">
       <h1 class="section-title">多人頁面尚未完成</h1>
