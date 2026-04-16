@@ -4,6 +4,7 @@ const CURRENCIES = ["TWD", "JPY", "KRW"];
 const form = document.getElementById("entryForm");
 const summaryGrid = document.getElementById("summaryGrid");
 const details = document.getElementById("details");
+
 const summaryToggle = document.getElementById("summaryToggle");
 const summaryContent = document.getElementById("summaryContent");
 const summaryToggleText = document.getElementById("summaryToggleText");
@@ -288,14 +289,14 @@ function setupSummaryToggle() {
   if (!summaryToggle || !summaryContent || !summaryToggleText) return;
 
   summaryToggle.addEventListener("click", () => {
-    const isHidden = summaryContent.classList.contains("is-hidden");
+    const isHidden = summaryContent.hidden;
 
     if (isHidden) {
-      summaryContent.classList.remove("is-hidden");
+      summaryContent.hidden = false;
       summaryToggle.setAttribute("aria-expanded", "true");
       summaryToggleText.textContent = "收起";
     } else {
-      summaryContent.classList.add("is-hidden");
+      summaryContent.hidden = true;
       summaryToggle.setAttribute("aria-expanded", "false");
       summaryToggleText.textContent = "展開";
     }
