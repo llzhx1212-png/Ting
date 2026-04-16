@@ -416,3 +416,26 @@ body {
 .side-drawer.show {
   transform: translateX(0);
 }
+
+[hidden] {
+  display: none !important;
+}
+
+.collapse-toggle {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--soft);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.collapse-content {
+  margin-top: 14px;
+}
